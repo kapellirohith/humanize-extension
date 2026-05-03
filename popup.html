@@ -439,9 +439,21 @@
   </div>
 
   <div class="upgrade-card" id="upgrade-card">
-    <div class="upgrade-card-title">🚀 You've hit the free limit!</div>
-    <div class="upgrade-card-body">Upgrade to Humanize Pro for unlimited rewrites across all modes.</div>
-    <button class="upgrade-card-btn">Upgrade for unlimited →</button>
+    <div class="upgrade-card-title">🚀 Unlock Humanize Pro</div>
+    <div class="upgrade-card-body">Unlimited rewrites across all modes. Choose your payment method below.</div>
+    
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button class="upgrade-card-btn" id="btn-upi" style="flex:1;background:#22c55e;">Pay via UPI (₹399)</button>
+      <button class="upgrade-card-btn" id="btn-card" style="flex:1;">Card / Global ($5)</button>
+    </div>
+
+    <!-- Hidden UPI details -->
+    <div id="upi-details" style="display:none;margin-top:14px;background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;text-align:center;">
+      <div style="font-size:11px;color:#d1d5db;margin-bottom:8px;">Scan to pay ₹399 (Zero Platform Fees)</div>
+      <img src="icons/upi-qr.png" alt="UPI QR Code" style="width:140px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);margin-bottom:8px;">
+      <div style="font-size:10px;color:#9ca3af;">UPI ID: <strong>6281918289@yescred</strong></div>
+      <div style="font-size:10px;color:#9ca3af;margin-top:8px;line-height:1.4;">After paying, email a screenshot to <strong>kapellirohith@gmail.com</strong> to receive your License Key.</div>
+    </div>
   </div>
 
   <div class="ai-status" id="ai-status-box">

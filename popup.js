@@ -31,6 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('site-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') addCustomSite();
   });
+
+  // ── UPGRADE BUTTONS ──
+  const btnUpi = document.getElementById('btn-upi');
+  const btnCard = document.getElementById('btn-card');
+  const upiDetails = document.getElementById('upi-details');
+  if (btnUpi) {
+    btnUpi.addEventListener('click', () => {
+      upiDetails.style.display = upiDetails.style.display === 'none' ? 'block' : 'none';
+    });
+  }
+  if (btnCard) {
+    btnCard.addEventListener('click', () => {
+      // Replace with actual Stripe/LemonSqueezy link later
+      window.open('https://buy.stripe.com/test_link', '_blank'); 
+    });
+  }
 });
 
 function renderUsage(count) {

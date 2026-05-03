@@ -290,10 +290,10 @@
       if (mode === 'subtle') result = Humanize.subtleMode(currentSelection);
       else if (mode === 'human') result = Humanize.humanMode(currentSelection);
       else if (mode === 'ceo') result = Humanize.ceoMode(currentSelection);
-    } catch(e) { console.error('[Humanize]', e); return; }
+    } catch(e) { console.error('[WriteHuman]', e); return; }
     // BUG FIX: guard against undefined result before replacing text
     if (!result || typeof result !== 'string') {
-      console.error('[Humanize] Transform returned empty/undefined for mode:', mode);
+      console.error('[WriteHuman] Transform returned empty/undefined for mode:', mode);
       return;
     }
     incUsage();
@@ -308,7 +308,7 @@
       incUsage();
       showPreviewCard(result);
     } catch (err) {
-      console.error('[Humanize] Rewrite failed:', err);
+      console.error('[WriteHuman] Rewrite failed:', err);
       alert('Rewrite failed: ' + err.message);
       if (btn) {
         btn.innerHTML = '<span>✦ Rewrite</span>';
@@ -422,7 +422,7 @@
           flashNode(node);
           return;
         } catch (err) {
-          console.warn('[Humanize] Range replacement failed:', err);
+          console.warn('[WriteHuman] Range replacement failed:', err);
         }
       }
     }
@@ -446,7 +446,7 @@
   function showCopiedNotification() {
     const note = document.createElement('div');
     note.id = 'humanize-copied-note';
-    note.textContent = '✓ Humanized text copied to clipboard — paste it where you need it';
+    note.textContent = '✓ WriteHuman text copied to clipboard — paste it where you need it';
     note.style.cssText = `
       position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
       z-index:2147483647; background:#1a1a1a; color:#fff;
@@ -478,8 +478,8 @@
     if (document.getElementById('humanize-upgrade-banner')) return;
     const b = document.createElement('div');
     b.id = 'humanize-upgrade-banner';
-    b.innerHTML = `<span>You've used 3 free humanizations.</span>
-      <a href="#" class="humanize-upgrade-link">Upgrade for unlimited →</a>
+    b.innerHTML = `<span>You've used your 3 free WriteHuman uses.</span>
+      <a href="#" class="humanize-upgrade-link">Upgrade WriteHuman Pro →</a>
       <button class="humanize-upgrade-close" aria-label="Close">✕</button>`;
     b.querySelector('.humanize-upgrade-close').addEventListener('click', () => b.remove());
     document.body.appendChild(b);

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Humanize",
+  "name": "WriteHuman",
   "version": "1.0.0",
   "description": "Transform AI-written text into natural human-sounding text. Works on Gmail, Outlook, and any webpage. No API. No backend. 100% offline.",
   "permissions": [
@@ -39,7 +39,7 @@
         "default": "Ctrl+Shift+H",
         "mac": "Ctrl+Shift+H"
       },
-      "description": "Open Humanize pill on current selection"
+      "description": "Open WriteHuman pill on current selection"
     }
   },
   "background": {

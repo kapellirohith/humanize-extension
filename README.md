@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="icons/icon128.png" alt="Humanize Logo" width="80"/>
-  <h1>Humanize — Chrome Extension</h1>
+  <img src="icons/icon128.png" alt="WriteHuman Logo" width="80"/>
+  <h1>WriteHuman — Chrome Extension</h1>
   <p><strong>Transform AI-written text into natural, human-sounding prose instantly.</strong></p>
   
   [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat&logo=Google-Chrome&logoColor=white)](#)
@@ -11,8 +11,8 @@
 
 ---
 
-## 🚀 What is Humanize?
-AI text is fast, but it often sounds robotic, overly formal, and full of buzzwords ("delve", "leverage", "seamless"). **Humanize** is a Chrome extension that lives right on your webpage. Select any block of text, click the pop-up pill, and instantly strip away the "AI flavor" so it sounds like a real person wrote it at their desk.
+## 🚀 What is WriteHuman?
+AI text is fast, but it often sounds robotic, overly formal, and full of buzzwords ("delve", "leverage", "seamless"). **WriteHuman** is a Chrome extension that lives right on your webpage. Select any block of text, click the pop-up pill, and instantly strip away the "AI flavor" so it sounds like a real person wrote it at their desk.
 
 * **No API Keys.**
 * **No external servers.** 
@@ -36,10 +36,10 @@ AI text is fast, but it often sounds robotic, overly formal, and full of buzzwor
 1. Clone this repository or download the ZIP.
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable **Developer mode** via the toggle in the top right.
-4. Click **Load unpacked** and select the `humanize-extension` folder.
+4. Click **Load unpacked** and select the `writehuman-extension` folder.
 5. Pin the ✦ icon to your browser toolbar!
 
-> **Pro Tip:** Press `Ctrl + Shift + H` (or `Cmd + Shift + H` on Mac) to instantly trigger the Humanize pill on your current text selection.
+> **Pro Tip:** Press `Ctrl + Shift + H` (or `Cmd + Shift + H` on Mac) to instantly trigger the WriteHuman pill on your current text selection.
 
 ---
 
@@ -59,14 +59,14 @@ The `Rewrite` mode takes advantage of Google's new **Prompt API** to run the Gem
 ## 🔒 Privacy & Security
 
 **Zero data leaves your device. Ever.** 
-Unlike other AI tools that beam your private emails and documents to remote servers, Humanize processes text locally. The Subtle, Human, and CEO modes rely on a robust custom RegExp engine, and the Rewrite mode utilizes your browser's local AI weights.
+Unlike other AI tools that beam your private emails and documents to remote servers, WriteHuman processes text locally. The Subtle, Human, and CEO modes rely on a robust custom RegExp engine, and the Rewrite mode utilizes your browser's local AI weights.
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-humanize-extension/
+writehuman-extension/
 ├── manifest.json     — Extension configurations (Manifest V3)
 ├── humanize.js       — Core transform engine (buzzword mapping, syntax rewriting)
 ├── content.js        — DOM injection, floating pill UI, text extraction/replacement

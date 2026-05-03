@@ -243,7 +243,13 @@
     if (text.length < 40 || text.length > 5000) { destroyAll(); return; }
 
     getUsage(count => {
-      if (count >= 3) { showUpgradeBanner(); destroyAll(); return; }
+      // ============================================================
+      // PAYMENT GATE — PAUSED (do not delete)
+      // To re-enable: uncomment the 3 lines below.
+      // This blocks users after 3 free uses and shows the upgrade banner.
+      // FREE_LIMIT is set to 3 in popup.js.
+      // ============================================================
+      // if (count >= 3) { showUpgradeBanner(); destroyAll(); return; }
 
       // Bug 11: block CEO on transactional/security emails
       if (mode === 'ceo' && isTransactionalEmail(text)) {

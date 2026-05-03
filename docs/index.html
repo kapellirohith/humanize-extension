@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humanize — Chrome Extension</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0f172a; color: #f8fafc; }
+    .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .gradient-text { background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+  
+  <div class="max-w-3xl w-full glass rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden">
+    <!-- Decorative Blur -->
+    <div class="absolute -top-32 -left-32 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+    <div class="absolute -bottom-32 -right-32 w-64 h-64 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+    
+    <div class="relative z-10">
+      <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-4xl shadow-lg">
+        ✦
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+        Make AI Sound <br><span class="gradient-text">Human Again.</span>
+      </h1>
+      
+      <p class="text-lg text-slate-300 mb-10 max-w-xl mx-auto leading-relaxed">
+        Humanize is a Chrome Extension that lives directly on your webpage. Strip away robotic buzzwords and transform ChatGPT output into natural prose with one click.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="https://github.com/kapellirohith/humanize-extension" class="px-8 py-4 bg-white text-slate-900 font-semibold rounded-full hover:bg-slate-100 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          View on GitHub
+        </a>
+        <a href="#pro" class="px-8 py-4 bg-transparent border border-slate-500 text-white font-semibold rounded-full hover:bg-slate-800 transition">
+          Get Humanize Pro
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+          <div class="text-2xl mb-2">🪶</div>
+          <h3 class="font-bold text-lg mb-2">Subtle Mode</h3>
+          <p class="text-sm text-slate-400">Removes buzzwords, adds natural contractions, and inserts one realistic human typo.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+          <div class="text-2xl mb-2">🙋</div>
+          <h3 class="font-bold text-lg mb-2">Human Mode</h3>
+          <p class="text-sm text-slate-400">Varies sentence rhythm, adds casual connectors, and softens email closings.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-gradient-to-r from-orange-500 to-amber-500 text-[10px] font-bold px-3 py-1 rounded-bl-lg">PRO</div>
+          <div class="text-2xl mb-2">⚡</div>
+          <h3 class="font-bold text-lg mb-2">CEO Mode</h3>
+          <p class="text-sm text-slate-400">Ultra-short. Lowercase. Blunt. Sounds like an executive replying from their phone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="mt-8 text-sm text-slate-500">Built with 100% on-device privacy. Zero data collected.</p>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+/* styles.css — Humanize Extension */
+
+/* ── PILL — position:fixed so it works on ChatGPT, Claude, Gemini, everywhere ── */
+#humanize-pill {
+  position: fixed !important;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  padding: 4px 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(6px) scale(0.96);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: all;
+  user-select: none;
+  max-width: calc(100vw - 16px);
+}
+
+#humanize-pill.humanize-pill--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.humanize-sep {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  background: rgba(0,0,0,0.12);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.humanize-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #1a1a1a;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.1s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.humanize-btn:hover:not(:disabled) { background: #f0f0f0; transform: scale(1.03); }
+.humanize-btn:active:not(:disabled) { transform: scale(0.97); }
+.humanize-btn[data-mode="subtle"]:hover:not(:disabled) { background: #eff6ff; color: #2563eb; }
+.humanize-btn[data-mode="human"]:hover:not(:disabled) { background: #f0fdf4; color: #16a34a; }
+.humanize-btn[data-mode="ceo"]:hover:not(:disabled) { background: #fffbeb; color: #d97706; }
+
+.humanize-btn--rewrite {
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  color: #fff !important;
+  font-weight: 600;
+  padding: 5px 14px;
+}
+.humanize-btn--rewrite:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed) !important;
+  transform: scale(1.04);
+}
+.humanize-btn--disabled { opacity: 0.38; cursor: not-allowed !important; }
+
+.humanize-btn--close {
+  padding: 4px 7px;
+  font-size: 11px;
+  color: #9ca3af;
+  margin-left: 2px;
+}
+.humanize-btn--close:hover { color: #ef4444 !important; background: #fef2f2 !important; }
+
+.humanize-pro-badge {
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+.humanize-spinner {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: humanize-spin 0.7s linear infinite;
+}
+@keyframes humanize-spin { to { transform: rotate(360deg); } }
+
+/* ── WARNING PILL (formal document) ── */
+#humanize-warn {
+  position: fixed !important;
+  z-index: 2147483647;
+  background: #fff;
+  border: 1px solid #fbbf24;
+  border-radius: 14px;
+  padding: 12px 14px;
+  max-width: 300px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+#humanize-warn.humanize-warn--visible { opacity: 1; transform: translateY(0); }
+.humanize-warn__title { font-weight: 600; color: #92400e; margin-bottom: 6px; }
+.humanize-warn__body { color: #6b7280; line-height: 1.45; margin-bottom: 10px; }
+.humanize-warn__actions { display: flex; gap: 8px; }
+.humanize-warn__go {
+  flex: 1; padding: 6px 10px; border: none; border-radius: 8px;
+  background: #7c3aed; color: #fff; font-size: 11px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.humanize-warn__cancel {
+  flex: 1; padding: 6px 10px; border: 1px solid #e5e7eb; border-radius: 8px;
+  background: #fff; color: #4b5563; font-size: 11px; font-weight: 500;
+  cursor: pointer; font-family: inherit;
+}
+
+/* ── PREVIEW CARD — also fixed ── */
+#humanize-preview {
+  position: fixed !important;
+  z-index: 2147483648; /* Higher than pill so it overlaps nicely */
+  user-select: text;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+#humanize-preview.humanize-preview--visible { opacity: 1; transform: translateY(0); }
+.humanize-preview__header { padding: 10px 14px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: #7c3aed; background: #faf5ff; border-bottom: 1px solid #ede9fe; }
+.humanize-preview__body { padding: 12px 14px; color: #1a1a1a; line-height: 1.55; max-height: 180px; overflow-y: auto; white-space: pre-wrap; word-break: break-word; }
+.humanize-preview__actions { display: flex; gap: 8px; padding: 10px 14px; border-top: 1px solid #f0f0f0; background: #fafafa; }
+.humanize-preview__apply { flex: 1; padding: 7px 12px; border: none; border-radius: 8px; background: linear-gradient(135deg, #7c3aed, #9333ea); color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.humanize-preview__apply:hover { opacity: 0.88; }
+.humanize-preview__copy { flex: 1; padding: 7px 12px; border: 1px solid #7c3aed; border-radius: 8px; background: #fff; color: #7c3aed; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.humanize-preview__copy:hover { background: #faf5ff; }
+.humanize-preview__discard { flex: 1; padding: 7px 12px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; color: #4b5563; font-size: 12px; font-weight: 500; cursor: pointer; font-family: inherit; }
+.humanize-preview__discard:hover { background: #f9fafb; }
+
+/* ── UPGRADE BANNER ── */
+#humanize-upgrade-banner {
+  position: fixed !important;
+  bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex; align-items: center; gap: 12px;
+  background: #1a1a1a; color: #fff;
+  padding: 12px 20px; border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  animation: humanize-slide-up 0.25s ease;
+}
+@keyframes humanize-slide-up {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.humanize-upgrade-link { color: #a78bfa; text-decoration: none; font-weight: 600; white-space: nowrap; }
+.humanize-upgrade-link:hover { text-decoration: underline; }
+.humanize-upgrade-close { background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 14px; padding: 0; margin-left: 4px; }
+.humanize-upgrade-close:hover { color: #fff; }

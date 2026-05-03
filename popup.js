@@ -15,7 +15,7 @@ const DEFAULT_SITES = [
 
 document.addEventListener('DOMContentLoaded', () => {
   // ── LOAD USAGE ──
-  chrome.storage.local.get(['humanize_usage'], (result) => {
+  chrome.storage.sync.get(['humanize_usage'], (result) => {
     const count = result.humanize_usage || 0;
     renderUsage(count);
   });
@@ -122,7 +122,7 @@ function setAIOff(box, text) {
 // ══════════════════════════════════
 
 function loadAndRenderSites() {
-  chrome.storage.local.get(['humanize_custom_sites'], (result) => {
+  chrome.storage.sync.get(['humanize_custom_sites'], (result) => {
     const customSites = result.humanize_custom_sites || [];
     renderSites(customSites);
   });
@@ -187,7 +187,7 @@ function addCustomSite() {
   errorEl.style.display = 'none';
   input.value = '';
 
-  chrome.storage.local.get(['humanize_custom_sites'], (result) => {
+  chrome.storage.sync.get(['humanize_custom_sites'], (result) => {
     const custom = result.humanize_custom_sites || [];
     if (custom.includes(host)) {
       errorEl.textContent = 'This site is already added.';
@@ -195,16 +195,16 @@ function addCustomSite() {
       return;
     }
     custom.push(host);
-    chrome.storage.local.set({ humanize_custom_sites: custom }, () => {
+    chrome.storage.sync.set({ humanize_custom_sites: custom }, () => {
       renderSites(custom);
     });
   });
 }
 
 function removeCustomSite(host) {
-  chrome.storage.local.get(['humanize_custom_sites'], (result) => {
+  chrome.storage.sync.get(['humanize_custom_sites'], (result) => {
     const custom = (result.humanize_custom_sites || []).filter(h => h !== host);
-    chrome.storage.local.set({ humanize_custom_sites: custom }, () => {
+    chrome.storage.sync.set({ humanize_custom_sites: custom }, () => {
       renderSites(custom);
     });
   });

@@ -25,7 +25,7 @@
   // Load custom sites from storage and check if current site is allowed
   function initSiteCheck() {
     const hostname = window.location.hostname;
-    chrome.storage.local.get(['humanize_custom_sites'], (result) => {
+    chrome.storage.sync.get(['humanize_custom_sites'], (result) => {
       const custom = result.humanize_custom_sites || [];
       allowedSites = [...DEFAULT_SITES, ...custom];
       currentSiteAllowed = allowedSites.some(site => hostname.includes(site));
@@ -74,8 +74,8 @@
   }
 
   // ── USAGE ──
-  function getUsage(cb) { chrome.storage.local.get(['humanize_usage'], r => cb(r.humanize_usage || 0)); }
-  function incUsage() { getUsage(n => chrome.storage.local.set({ humanize_usage: n + 1 })); }
+  function getUsage(cb) { chrome.storage.sync.get(['humanize_usage'], r => cb(r.humanize_usage || 0)); }
+  function incUsage() { getUsage(n => chrome.storage.sync.set({ humanize_usage: n + 1 })); }
 
   // ── PILL ──
   function createPill(rect, rewriteAvailable) {

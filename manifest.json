@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "WriteHuman",
   "version": "1.0.0",
-  "description": "Transform AI-written text into natural human-sounding text. Works on Gmail, Outlook, and any webpage. No API. No backend. 100% offline.",
+  "description": "Transform AI text into natural human-sounding prose. Works on Gmail, Outlook & any webpage. No API. 100% offline.",
   "permissions": [
     "activeTab",
     "storage",

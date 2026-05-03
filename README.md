@@ -1,87 +1,77 @@
-# Humanize — Chrome Extension
-
-> Transform AI-written text into natural human-sounding text.  
-> No API. No backend. Works 100% offline.
-
----
-
-## How It Works
-
-1. Select any text on any webpage (Gmail, Outlook, ChatGPT, Google Docs, etc.)
-2. A small pill appears above your selection
-3. Pick a mode — the text is rewritten **in-place instantly**
+<div align="center">
+  <img src="icons/icon128.png" alt="Humanize Logo" width="80"/>
+  <h1>Humanize — Chrome Extension</h1>
+  <p><strong>Transform AI-written text into natural, human-sounding prose instantly.</strong></p>
+  
+  [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat&logo=Google-Chrome&logoColor=white)](#)
+  [![100% Offline](https://img.shields.io/badge/Offline-100%25-success?style=flat)](#)
+  [![Gemini Nano](https://img.shields.io/badge/AI-Gemini_Nano-8A2BE2?style=flat)](#)
+  [![Zero Data Collected](https://img.shields.io/badge/Privacy-Zero_Data_Collected-green?style=flat)](#)
+</div>
 
 ---
 
-## Modes
+## 🚀 What is Humanize?
+AI text is fast, but it often sounds robotic, overly formal, and full of buzzwords ("delve", "leverage", "seamless"). **Humanize** is a Chrome extension that lives right on your webpage. Select any block of text, click the pop-up pill, and instantly strip away the "AI flavor" so it sounds like a real person wrote it at their desk.
 
-| Mode | What it does |
-|---|---|
-| 🪶 **Subtle** | Removes AI buzzwords, adds contractions, inserts one realistic typo. Reads like a sharp human editor touched it. |
-| 🙋 **Human** | Everything in Subtle + rhythm variation, casual connectors ("Anyway,", "Heads up —"), softened closing. Clearly typed by a real person. |
-| ⚡ **CEO** | Ultra-short. Lowercase. Blunt. Exec replying from phone between meetings. |
-| ✦ **Rewrite** | Full intelligent rewrite via Chrome's built-in Gemini Nano. Zero API cost. Zero external calls. 100% local. |
+* **No API Keys.**
+* **No external servers.** 
+* **100% On-Device execution.**
 
 ---
 
-## Installation (Developer Mode)
+## ✨ Features & Modes
 
-1. Download or clone this repository
-2. Open Chrome → `chrome://extensions/`
-3. Enable **Developer mode** (top right)
-4. Click **Load unpacked** → select the `humanize-extension` folder
-5. Pin the extension to your toolbar
-
-**Keyboard shortcut:** `Ctrl + Shift + H` to open the pill on your current selection.
+| Mode | Behavior | Best For |
+|---|---|---|
+| 🪶 **Subtle** | Strips out AI buzzwords, adds natural contractions, and injects exactly one realistic human typo. | Professional emails where you just want to remove the "AI stink". |
+| 🙋 **Human** | Everything in Subtle, plus rhythm variation, casual connectors ("Anyway," "Heads up —"), and softened closings. | Slack messages, internal team updates, informal emails. |
+| ⚡ **CEO `PRO`** | Extremely short. Brutally concise. All lowercase. | Replying from your phone between meetings. |
+| ✦ **Rewrite** | A full, intelligent rewrite using Chrome's newly built-in **Gemini Nano AI model** (Requires Chrome 127+). | Completely restructuring the paragraph. |
 
 ---
 
-## Enabling ✦ Rewrite Mode (Chrome Built-in AI)
+## 🛠 Installation (Developer Mode)
 
-Rewrite mode uses Chrome's built-in Gemini Nano — no API key needed.
+1. Clone this repository or download the ZIP.
+2. Open Chrome and navigate to `chrome://extensions/`
+3. Enable **Developer mode** via the toggle in the top right.
+4. Click **Load unpacked** and select the `humanize-extension` folder.
+5. Pin the ✦ icon to your browser toolbar!
 
-1. Open Chrome 127 or later
+> **Pro Tip:** Press `Ctrl + Shift + H` (or `Cmd + Shift + H` on Mac) to instantly trigger the Humanize pill on your current text selection.
+
+---
+
+## 🤖 Enabling Gemini Nano (✦ Rewrite Mode)
+
+The `Rewrite` mode takes advantage of Google's new **Prompt API** to run the Gemini Nano LLM entirely on your local GPU/CPU. 
+
+1. Ensure you are on Chrome version 127 or newer.
 2. Go to `chrome://flags`
-3. Enable **"Prompt API for Gemini Nano"**
-4. Enable **"Optimization Guide On Device Model"**
-5. Restart Chrome
-6. Go to `chrome://components` → find **"Optimization Guide On Device Model"** → click **Check for Update**
-7. Wait for the model to download (~1-3 GB)
-8. The ✦ Rewrite button will automatically activate
-
-> The other 3 modes (Subtle, Human, CEO) work without this — fully offline, always.
+3. Search for **Prompt API for Gemini Nano** and set it to **Enabled**.
+4. Search for **Optimization Guide On Device Model** and set it to **Enabled BypassPrefRequirement**.
+5. Relaunch Chrome.
+6. (Optional but recommended) Go to `chrome://components`, find *Optimization Guide On Device Model*, and click **Check for Update** to ensure the model downloads (~1.5GB).
 
 ---
 
-## Works On
+## 🔒 Privacy & Security
 
-- ✅ Gmail compose
-- ✅ Outlook Web
-- ✅ Any `<textarea>` or `<input>`
-- ✅ Any `contenteditable` element (Google Docs, Notion, etc.)
-- ✅ Any webpage
+**Zero data leaves your device. Ever.** 
+Unlike other AI tools that beam your private emails and documents to remote servers, Humanize processes text locally. The Subtle, Human, and CEO modes rely on a robust custom RegExp engine, and the Rewrite mode utilizes your browser's local AI weights.
 
 ---
 
-## Privacy & Security
+## 📂 Project Structure
 
-- **Zero data leaves your device.** Ever.
-- All transforms run locally in your browser tab.
-- Chrome AI (Rewrite mode) also runs 100% on-device.
-- Usage count is stored in `chrome.storage.local` — never synced externally.
-
----
-
-## Project Structure
-
-```
+```text
 humanize-extension/
-├── manifest.json     — MV3 manifest
-├── humanize.js       — Core transform engine (all replacements, typos, CEO logic)
-├── content.js        — Pill UI, selection detection, text replacement
-├── styles.css        — Pill, preview card, upgrade banner styles
-├── popup.html        — Extension popup
-├── popup.js          — Usage stats, Chrome AI status
-├── background.js     — Keyboard shortcut relay
-└── icons/            — Extension icons
+├── manifest.json     — Extension configurations (Manifest V3)
+├── humanize.js       — Core transform engine (buzzword mapping, syntax rewriting)
+├── content.js        — DOM injection, floating pill UI, text extraction/replacement
+├── styles.css        — UI styling (Pill, dialog boxes, upgrade banners)
+├── popup.html        — Extension settings interface
+├── popup.js          — Usage stats logic and Chrome AI diagnostics
+└── background.js     — Service worker for global keyboard shortcuts
 ```
